@@ -30,51 +30,35 @@ function updateProgress(percent) {
 }
 // HÀM GỌI DEEPSEEK API - THÊM Ở ĐÂY
 async function callDeepSeekAPI(text) {
-    console.log("Gọi DeepSeek API với text:", text.substring(0, 50) + "...");
-    
+    console.log("Gọi Cloudflare Worker...");
     try {
-        const response = await fetch(DEEPSEEK_CONFIG.API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${DEEPSEEK_CONFIG.API_KEY}`
-            },
-            body: JSON.stringify({
-                model: DEEPSEEK_CONFIG.MODEL,
-                messages: [
-                    {
-                        role: "system",
-                        content: `Bạn là chuyên gia tóm tắt THÔNG MINH. Hãy:
-                        1. Tóm tắt văn bản thành 5-10 bullet points NGẮN GỌN
-                        2. Mỗi bullet point tối đa 2 dòng
-                        3. Chỉ giữ lại thông tin QUAN TRỌNG NHẤT: số liệu chính, ngày tháng quan trọng
-                        4. BỎ các thông tin phụ, mô tả dài dòng
-                        5. Dùng format: • [Nội dung ngắn gọn]
-                        6. Tập trung vào Ý CHÍNH, không trích xuất nguyên văn
-                        
-                        QUAN TRỌNG: Phải là TÓM TẮT thực sự, không phải liệt kê mọi chi tiết`
-                    },
-                    {
-                        role: "user",
-                        content: `Hãy phân tích và tóm tắt văn bản này theo yêu cầu trên: ${text}`
-                    }
-                ],
-                max_tokens: 800,
-                temperature: 0.3
-            })
-        });
-        
-        if (!response.ok) {
-            throw new Error(`API error: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        return data.choices[0].message.content;
-        
-    } catch (error) {
-        console.error("Lỗi DeepSeek API:", error);
-        throw error;
+    const response = await fetch(CONFIG.PROXY_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        text: text 
+      })
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `Worker error: ${response.status}`);
     }
+    
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error(data.error || 'Unknown error from worker');
+    }
+    
+    return data.summary;
+    
+  } catch (error) {
+    console.error("Lỗi khi gọi worker:", error);
+    throw error;
+  }
 }
 
 // Đợi HTML tải xong rồi mới thêm event listeners
