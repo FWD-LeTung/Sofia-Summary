@@ -7,7 +7,7 @@ function countCharacters(text) {
 function calculateCompression(original, summary) {
     if (!original || original.length === 0) return 0;
     const reduction = 100 - (summary.length * 100 / original.length);
-    return Math.round(reduction * 10) / 10; // Làm tròn 1 số thập phân
+    return Math.round(reduction * 10) / 10;
 }
 
 function showProgress() {
@@ -76,11 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Paste button clicked!");
             
             try {
-                // Đọc text từ clipboard
+
                 const text = await navigator.clipboard.readText();
                 console.log("Text from clipboard:", text.substring(0, 50) + "...");
-                
-                // Hiển thị vào textarea
+
                 document.getElementById('textInput').value = text;
                 const textInput = document.getElementById('textInput');
                 const charCount = document.getElementById('charCount');
@@ -119,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             
             if (text.trim() === "") {
-                resultDiv.innerHTML = "<p class='error-message'>Vui lòng nhập văn bản</p>";
+                resultDiv.innerHTML = "<p class='error-message'>Insert text, please.</p>";
                 return;
             }
             
@@ -136,21 +135,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }, 300);
                 
-                // Gọi API
+                // Call API
                 const summary = await callDeepSeekAPI(text);
                 const originalLength = countCharacters(text);
                 const summaryLength = countCharacters(summary);
     
-                // Dừng interval
                 clearInterval(progressInterval);
-                
-                // Hoàn thành progress
                 updateProgress(100);
                 
-                // Delay nhỏ để người dùng thấy 100%
                 setTimeout(() => {
                     hideProgress();
-                    // Xử lý text trước khi hiển thị
                     const formattedSummary = summary
                         .trim() 
                         .replace(/^\s*\n+/g, '') 
@@ -168,14 +162,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         
                         <button id="copySummaryBtn" style="margin-top: 15px; padding: 8px 15px;">
-                            📋 Sao chép tóm tắt
+                            📋 copy
                         </button>
                     `;                    
 
                     document.getElementById('copySummaryBtn').addEventListener('click', async function() {
                         try {
                             await navigator.clipboard.writeText(summary);
-                            alert("Đã sao chép tóm tắt!");
+                            alert("Copied!");
                         } catch (err) {
                             console.error("Lỗi khi sao chép:", err);
                         }

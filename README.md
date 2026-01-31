@@ -7,12 +7,15 @@
 
 A smart browser extension that summarizes long texts using AI. Supports Vietnamese and English with clean bullet-point formatting.
 
+## Introduce
+promote/small.png
+
 ## ✨ Features
 
 - ** AI-Powered Summaries**: Uses DeepSeek AI for accurate text summarization
 - ** Smart Clipboard**: One-click paste from clipboard
 - ** Bullet-Point Format**: Clean, structured summaries with bullet points
-- ** Vietnamese Support**: Optimized for Vietnamese text processing
+- ** Support Multiple Languages**: Input any language, output Vietnamese
 - ** Fast Processing**: Cloudflare Worker backend for quick responses
 - ** Privacy Focused**: Your data is not stored or shared
 
