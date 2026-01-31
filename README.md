@@ -8,7 +8,6 @@
 A smart browser extension that summarizes long texts using AI. Supports Vietnamese and English with clean bullet-point formatting.
 
 ## Introduce
-promote/small.png
 ![Thumbnail](promote/small.png)
 ## ✨ Features
 
