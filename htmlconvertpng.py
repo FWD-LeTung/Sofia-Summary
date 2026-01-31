@@ -1,3 +1,6 @@
+import imgkit
+
+html = """
 <!DOCTYPE html>
 <html>
 <body style="margin: 0; padding: 0;">
@@ -12,7 +15,7 @@
     
     <!-- Right side: Text -->
     <div style="flex: 1; padding: 40px; color: white; font-family: Arial;">
-        <h1 style="font-size: 48px;color: #93c5fd; margin-bottom: 10px;">Sofia</h1>
+        <h1 style="font-size: 48px; margin-bottom: 10px;">Sofia</h1>
         <p style="font-size: 24px; color: #93c5fd; margin-bottom: 30px;">Tóm tắt văn bản thông minh</p>
         
         <div style="margin-top: 30px;">
@@ -41,3 +44,6 @@
 </div>
 </body>
 </html>
+"""
+
+imgkit.from_string(html, "output.png")
