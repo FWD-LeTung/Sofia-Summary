@@ -2,6 +2,8 @@ body {
     width: 400px;
     padding: 20px;
     font-family: Arial, sans-serif;
+    border-radius: 10px;
+    border: 2px solid #2563eb;
 }
 
 h1 {
@@ -30,7 +32,7 @@ button {
 }
 
 .button-group {
-    width: 100%;                 /* RẤT QUAN TRỌNG */
+    width: 100%;                 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,13 +57,11 @@ button {
     line-height: 1.4;
 }
 
-/* Đảm bảo bullet points hiển thị đúng */
 #result p {
     white-space: pre-line;
     line-height: 1.5;
 }
 
-/* Progress bar container */
 .progress-container {
     display: none;
     margin: 20px 0;
@@ -95,4 +95,24 @@ button {
     font-weight: bold;
     color: #2563eb;
 }
+.char-counter {
+    font-size: 12px;
+    color: #6b7280;
+    text-align: right;
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
 
+.stats {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 10px;
+    padding: 8px;
+    background: #f9fafb;
+    border-radius: 6px;
+    display: none;
+}
+
+.compression-good { color: #059669; }
+.compression-ok { color: #d97706; }
+.compression-poor { color: #dc2626; }

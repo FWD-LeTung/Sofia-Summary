@@ -19,6 +19,9 @@
     autocorrect="off"
     autocapitalize="off">
     </textarea>
+    <div style="font-size: 12px; color: #6b7280; text-align: right; margin-top: -5px;">
+    <span id="charCount">0</span> ký tự
+    </div>
     <div id="progressContainer" class="progress-container">
     <div class="progress-bar">
         <div id="progressFill" class="progress-fill"></div>
@@ -31,7 +34,12 @@
     </p>
 </div>
 
-<div id="result"></div>
+<div id="result">
+    <div id="resultStats" style="font-size: 12px; color: #6b7280; margin-top: 10px; display: none;">
+    Kết quả: <span id="outputChars">0</span> ký tự • 
+    Giảm: <span id="compressionRate">0%</span>
+    </div>
+</div>
 <div class="button-group">
     <button id="pasteBtn">Click here🥚(Paste)</button>
     <button id="summarizeBtn">Summarize🐣</button>
