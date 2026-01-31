@@ -29,6 +29,14 @@ button {
     cursor: pointer;
 }
 
+.button-group {
+    width: 100%;                 /* RẤT QUAN TRỌNG */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
 #result {
     margin-top: 15px;
     padding: 10px;
