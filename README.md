@@ -9,7 +9,7 @@ A smart browser extension that summarizes long texts using AI. Supports Vietname
 
 ## Introduce
 promote/small.png
-
+![Thumbnail](promote/small.png)
 ## ✨ Features
 
 - ** AI-Powered Summaries**: Uses DeepSeek AI for accurate text summarization
