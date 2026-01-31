@@ -5,7 +5,7 @@
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A smart browser extension that summarizes long texts using AI. Supports Vietnamese and English with clean bullet-point formatting.
+A smart browser extension that summarizes long texts using AI. Supports many input languages, and vietnamese output with clean bullet-point formatting.
 
 ## Introduce
 ![Thumbnail](promote/small.png)
